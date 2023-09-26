@@ -3,15 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { images } from "../../../public/assets/images";
-import { signIn, signOut, getProviders } from "next-auth/react";
+import { signIn, signOut, getProviders, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import HomeButton from "@components/Navbar/components/HomeButton";
 
 interface Props {}
 
 const Navbar = ({}: Props) => {
-  // TODO: change to global variable
-  const isUserLoggedIn: boolean = true;
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState<any>(null);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -30,7 +29,7 @@ const Navbar = ({}: Props) => {
 
       {/* Desktop */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href={"/create-post"} className="black_btn">
               Create post
@@ -40,7 +39,7 @@ const Navbar = ({}: Props) => {
             </button>
             <Link href={"/profile"}>
               <Image
-                src={images.logo}
+                src={session?.user.image ?? images.logo}
                 alt={"profile"}
                 width={30}
                 height={30}
@@ -69,10 +68,10 @@ const Navbar = ({}: Props) => {
 
       {/* Mobile */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
             <Image
-              src={images.logo}
+              src={session?.user.image ?? images.logo}
               alt={"profile"}
               width={30}
               height={30}
