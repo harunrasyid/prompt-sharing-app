@@ -31,7 +31,7 @@ const Navbar = ({}: Props) => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href={"/create-post"} className="black_btn">
+            <Link href={"/create-prompt"} className="black_btn">
               Create post
             </Link>
             <button onClick={() => signOut()} className="outline_btn">
@@ -88,7 +88,7 @@ const Navbar = ({}: Props) => {
                   Profile
                 </Link>
                 <Link
-                  href={"/create-post"}
+                  href={"/create-prompt"}
                   className="dropdown_link"
                   onClick={() => setShowDropdown(false)}
                 >
