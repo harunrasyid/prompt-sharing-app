@@ -10,17 +10,30 @@ interface Props {
   setPost(data: PostPromptType): void;
   isSubmitting: boolean;
   handleSubmit(): void;
+  header?: string;
+  desc?: string;
 }
 
-const Form = ({ type, post, setPost, isSubmitting, handleSubmit }: Props) => {
+const Form = ({
+  type,
+  post,
+  setPost,
+  isSubmitting,
+  handleSubmit,
+  header = "",
+  desc = "",
+}: Props) => {
   return (
     <section className="w-full max-w-full flex-start flex-col">
-      <h1 className="head_text text-left blue_gradient">{type} Post</h1>
-      <p className="desc text-left max-w-md">
-        {type} and share your prompt and inspire the new AI generation
-      </p>
+      {header ? (
+        <h1 className="head_text text-left blue_gradient">{header}</h1>
+      ) : null}
+      {desc ? <p className="desc text-left max-w-md">{desc}</p> : null}
 
-      <form className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism">
+      <form
+        action={handleSubmit}
+        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
+      >
         <Textarea
           label={"Your AI prompt"}
           placeholder={"Write your prompt here..."}
