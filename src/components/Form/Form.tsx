@@ -9,7 +9,7 @@ interface Props {
   post: PostPromptType;
   setPost(data: PostPromptType): void;
   isSubmitting: boolean;
-  handleSubmit(): void;
+  handleSubmit(e: any): void;
   header?: string;
   desc?: string;
 }
@@ -31,7 +31,7 @@ const Form = ({
       {desc ? <p className="desc text-left max-w-md">{desc}</p> : null}
 
       <form
-        action={handleSubmit}
+        onSubmit={handleSubmit}
         className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
         <Textarea

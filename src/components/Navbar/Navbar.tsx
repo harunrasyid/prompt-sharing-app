@@ -1,9 +1,9 @@
 "use client";
 
 import HomeButton from "@components/Navbar/components/HomeButton";
+import useProviders from "@components/Navbar/hooks/useProviders";
 import DesktopNavbarMenu from "@components/Navbar/components/DesktopNavbarMenu";
 import MobileNavbarMenu from "@components/Navbar/components/MobileNavbarMenu";
-import useProviders from "@components/Navbar/hooks/useProviders";
 
 interface Props {}
 
