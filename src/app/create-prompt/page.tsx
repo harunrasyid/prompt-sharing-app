@@ -10,7 +10,7 @@ import {
 import useCreatePrompt from "@app/create-prompt/hooks/useCreatePrompt";
 
 const CreatePrompt = () => {
-  const { post, setPost, isSubmitting, setIsSubmitting, submitPrompt } =
+  const { post, setPost, isSubmitting, submitPrompt } =
     useCreatePrompt(defaultPostPrompt);
 
   return (
