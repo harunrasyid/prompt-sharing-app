@@ -1,5 +1,5 @@
 import { PromptType } from "@types";
-import PromptCard from "@app/components/PromptCard/PromptCard";
+import PromptCard from "@components/PromptCard/PromptCard";
 
 interface Props {
   prompts: PromptType[];
