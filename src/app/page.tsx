@@ -1,4 +1,5 @@
 import { HOME_SUBTITLE, HOME_TITLE, HOME_TITLE_DESC } from "@app/constants";
+import Feed from "@app/components/Feed/Feed";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <span className="text-center orange_gradient">{HOME_SUBTITLE}</span>
       </h1>
       <p className="desc text-center">{HOME_TITLE_DESC}</p>
+      <Feed />
     </section>
   );
 }
