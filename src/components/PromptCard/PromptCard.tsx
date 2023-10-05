@@ -1,8 +1,9 @@
 "use client";
 import { PromptType } from "@types";
 import Image from "next/image";
-import { icons } from "../../../../public/assets/icons";
-import useCopy from "@app/components/PromptCard/hooks/useCopy";
+import { Timeout } from "@constants";
+import { icons } from "../../../public/assets/icons";
+import useCopy from "@components/PromptCard/hooks/useCopy";
 
 interface Props {
   prompt: PromptType;
@@ -14,6 +15,7 @@ const PromptCard = ({ prompt, handleTagClick }: Props) => {
   const handleCopy = () => {
     setCopied(prompt?.prompt);
     navigator.clipboard.writeText(prompt?.prompt);
+    setTimeout(() => setCopied(""), Timeout.TIMEOUT_3S);
   };
 
   return (
