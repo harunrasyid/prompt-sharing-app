@@ -8,8 +8,15 @@ import useCopy from "@components/PromptCard/hooks/useCopy";
 interface Props {
   prompt: PromptType;
   handleTagClick(tag: string): void;
+  handleEdit?(data: PromptType): void;
+  handleDelete?(data: PromptType): void;
 }
-const PromptCard = ({ prompt, handleTagClick }: Props) => {
+const PromptCard = ({
+  prompt,
+  handleTagClick,
+  handleEdit,
+  handleDelete,
+}: Props) => {
   const { copied, setCopied } = useCopy();
 
   const handleCopy = () => {
@@ -56,6 +63,24 @@ const PromptCard = ({ prompt, handleTagClick }: Props) => {
       >
         {prompt?.tag}
       </p>
+      <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+        {handleEdit ? (
+          <p
+            className="font-inter text-sm green_gradient cursor-pointer"
+            onClick={() => handleEdit(prompt)}
+          >
+            Edit
+          </p>
+        ) : null}
+        {handleDelete ? (
+          <p
+            className="font-inter text-sm orange_gradient cursor-pointer"
+            onClick={() => handleDelete(prompt)}
+          >
+            Delete
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 };
